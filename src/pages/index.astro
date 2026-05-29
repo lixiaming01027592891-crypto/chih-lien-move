@@ -1,0 +1,431 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const processSteps = [
+  {
+    num: '01',
+    title: '電話諮詢',
+    desc: '透過電話或LINE聯繫，說明搬家日期、地點與物品概況，將由專人為您初步了解需求並提供說明。',
+  },
+  {
+    num: '02',
+    title: '免費估價',
+    desc: '安排人員到府實際評估搬運動線與物品數量，依實際狀況提供清楚明確的報價與建議方案。',
+  },
+  {
+    num: '03',
+    title: '契約簽訂',
+    desc: '確認搬遷內容與費用後簽訂服務契約，保障雙方權益，並安排實際搬家時間與人力配置。',
+  },
+  {
+    num: '04',
+    title: '紙箱提供',
+    desc: '依需求提供搬家紙箱與包材，協助分類裝箱，讓搬遷前整理更加順利且減少物品損壞風險。',
+  },
+  {
+    num: '05',
+    title: '搬遷服務',
+    desc: '由專業搬家人員依規劃進行打包、搬運與運送作業，全程注重安全與效率，確保物品完整。',
+  },
+  {
+    num: '06',
+    title: '家具定位',
+    desc: '物品送達新址後依客戶需求進行家具定位與擺放，協助快速恢復空間機能與生活動線。',
+  },
+  {
+    num: '07',
+    title: '驗收完成',
+    desc: '搬遷完成後與客戶一同確認物品狀況與定位結果，確保服務品質符合期待後完成結案。',
+  },
+];
+
+const services = [
+  {
+    title: '台中搬家搬遷',
+    desc: '提供24小時彈性搬家服務，適用住家搬遷與家具裝箱，由專業人員全程細心處理。',
+    img: '/service-1.png',
+    link: '/services/',
+  },
+  {
+    title: '台中貨物運送',
+    desc: '提供南北往返貨物運送服務，依貨品性質安排合適車型，確保運送過程安全準時。',
+    img: '/service-2.png',
+    link: '/services/',
+  },
+  {
+    title: '台中公司/工廠遷移',
+    desc: '專業處理辦公設備、重要文件與機械搬遷，協助企業快速完成整體遷移作業。',
+    img: '/service-3.png',
+    link: '/services/',
+  },
+  {
+    title: '台中精緻搬遷',
+    desc: '針對金庫、音響與私人收藏品進行專業搬運，採用加強保護方式降低損壞風險。',
+    img: '/service-4.png',
+    link: '/services/',
+  },
+  {
+    title: '台中大型物品搬移',
+    desc: '承接鋼琴、家電與重型設備搬運，依重量與空間條件規劃安全搬移方式。',
+    img: '/service-5.png',
+    link: '/services/',
+  },
+  {
+    title: '台中吊車搬家',
+    desc: '提供吊卸與起重搬運服務，適用高樓層與特殊環境，提升搬遷安全與效率。',
+    img: '/service-6.png',
+    link: '/services/',
+  },
+];
+
+const pillars = [
+  {
+    title: '專業執行安全為本',
+    desc: '志連精緻搬家以物品安全與搬運品質為首要原則，所有搬遷作業皆依實際狀況妥善規劃，從裝箱保護、搬運動線到車輛固定皆由受過訓練的人員負責，搭配合適包材與設備，降低碰撞與損壞風險，確保每一次搬家都能順利完成。',
+    icon: 'shield',
+  },
+  {
+    title: '專業搬家值得信賴',
+    desc: '我們持續優化搬家流程與設備配置，依不同空間條件與物品特性，安排合適車型與人力，無論是住家、辦公室或大型物件搬遷，皆能有效提升作業效率，縮短搬遷時間，讓客戶在合理預期內完成整體搬家計畫。',
+    icon: 'truck',
+  },
+  {
+    title: '細心服務安心託付',
+    desc: '志連搬家重視每一次與客戶的溝通細節，從前期說明到搬遷完成後的確認，皆以清楚、誠實為原則，耐心回應需求並即時調整作業方式，讓客戶在整個搬家過程中感受到被尊重與被照顧，建立長久信任關係。',
+    icon: 'heart',
+  },
+];
+
+const stats = [
+  { num: 18, suffix: '+', label: '年專業經驗', icon: 'calendar' },
+  { num: 10, suffix: '+', label: '輛專業車隊', icon: 'truck' },
+  { num: 300, suffix: '+', label: '件成功案例', icon: 'box' },
+  { num: 1500, suffix: '+', label: '位滿意客戶', icon: 'users' },
+];
+
+const testimonials = [
+  {
+    name: '王小姐',
+    service: '家庭搬家',
+    rating: 5,
+    quote: '志連搬家的師傅非常專業細心，所有家具都包裝得很完整，搬到新家後還幫我們把家具定位好，整個過程非常順利，真的很推薦！',
+  },
+  {
+    name: '陳先生',
+    service: '公司搬遷',
+    rating: 5,
+    quote: '我們公司搬遷找了志連搬家，從評估到完成都非常專業，沒有隱藏費用，員工都很滿意他們的服務態度，下次還會找他們。',
+  },
+  {
+    name: '林小姐',
+    service: '精緻搬遷',
+    rating: 5,
+    quote: '我的鋼琴和音響設備都很貴重，志連搬家的師傅非常小心地處理，用專業的包材保護，完整無缺地送到新家，非常感謝！',
+  },
+];
+---
+
+<Layout>
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-[600px] h-screen w-full overflow-hidden flex items-center">
+    <div class="absolute inset-0 z-0" style="background: linear-gradient(180deg, #023E7D 0%, #001845 70%, #001233 100%);"></div>
+
+    <div class="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+      <div class="absolute top-[20%] left-[10%] w-[300px] h-[300px] rounded-full opacity-[0.08]" style="background: #2EC4B6; filter: blur(80px);"></div>
+      <div class="absolute top-[40%] right-[15%] w-[250px] h-[250px] rounded-full opacity-[0.06]" style="background: #D4A843; filter: blur(80px);"></div>
+      <div class="absolute bottom-[20%] left-[30%] w-[200px] h-[200px] rounded-full opacity-[0.08]" style="background: #2EC4B6; filter: blur(80px);"></div>
+    </div>
+
+    <div class="absolute inset-0 z-[2] opacity-[0.05] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0l25.98 15v30L30 60 4.02 45V15L30 0z\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'1\'/%3E%3C/svg%3E'); background-size: 60px 60px;"></div>
+
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 z-[3] w-[55%] h-auto hidden lg:block hero-illustration">
+      <img src="/hero-bg.png" alt="志連搬家服務插畫" class="w-full h-auto object-contain opacity-90" loading="eager" />
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="max-w-2xl hero-content">
+        <p class="font-inter text-sm font-medium tracking-[0.15em] uppercase mb-4" style="color: #4FD1C5;">Chi Hlien Moving Service</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] text-white" style="text-shadow: 0 4px 20px rgba(0,18,51,0.3);">台中專業搬家推薦<br/>安心搬遷首選團隊</h1>
+        <p class="mt-6 text-lg lg:text-xl font-normal max-w-lg" style="color: #E0E7FF;">專業搬家服務，價格透明實在<br class="hidden sm:block"/>家庭搬家、公司搬遷一次完成</p>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white border border-white/30 bg-white/5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>政府合法立案
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white border border-white/30 bg-white/5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>18年經驗
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white border border-white/30 bg-white/5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24小時服務
+          </span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+          <a href="tel:0919073191" class="inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-base rounded-lg transition-all duration-300 hover:-translate-y-0.5" style="background: linear-gradient(135deg, #D4A843 0%, #B88D2E 100%); color: #001233; box-shadow: 0 8px 30px rgba(212,168,67,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>服務專線：0919-073191
+          </a>
+          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-base rounded-lg border border-white/20 text-white transition-all duration-300 hover:bg-white/10" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background: #06C755;">L</span>LINE 諮詢
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 scroll-indicator opacity-50">
+      <span class="text-[10px] font-medium tracking-[0.15em] uppercase text-white">Scroll</span>
+      <svg class="animate-bounce" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="relative z-20 -mt-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 rounded-2xl p-6 lg:p-8 shadow-xl" style="background: linear-gradient(135deg, rgba(2,62,125,0.95) 0%, rgba(0,24,69,0.95) 100%); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);">
+        <div class="text-center"><div class="text-3xl lg:text-4xl font-black" style="color: #D4A843;">18<span class="text-xl lg:text-2xl" style="color: #E8C872;">+</span></div><div class="text-sm mt-1" style="color: #E0E7FF;">年搬家經驗</div></div>
+        <div class="text-center"><div class="text-3xl lg:text-4xl font-black" style="color: #D4A843;">10<span class="text-xl lg:text-2xl" style="color: #E8C872;">+</span></div><div class="text-sm mt-1" style="color: #E0E7FF;">專業車輛</div></div>
+        <div class="text-center"><div class="text-3xl lg:text-4xl font-black" style="color: #D4A843;">300<span class="text-xl lg:text-2xl" style="color: #E8C872;">+</span></div><div class="text-sm mt-1" style="color: #E0E7FF;">累積案件</div></div>
+        <div class="text-center"><div class="text-3xl lg:text-4xl font-black" style="color: #D4A843;">1,500<span class="text-xl lg:text-2xl" style="color: #E8C872;">+</span></div><div class="text-sm mt-1" style="color: #E0E7FF;">服務客戶</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7-STEP PROCESS -->
+  <section id="process" class="py-16 lg:py-24" style="background: #FFFBF5;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-reveal">
+        <p class="text-sm font-medium tracking-[0.15em] uppercase mb-3" style="color: #2EC4B6;">PROFESSIONAL PROCESS</p>
+        <div class="w-[60px] h-[2px] mx-auto mb-6" style="background: #D4A843;"></div>
+        <h2 class="text-3xl lg:text-4xl font-bold" style="color: #001233;">志連搬家專注每一次細節</h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #64748B;">讓搬遷成為輕鬆安心的過程</p>
+      </div>
+
+      <div class="relative">
+        <div class="hidden lg:block absolute top-[40px] left-[calc(100%/14)] right-[calc(100%/14)] h-[2px]" style="background: linear-gradient(90deg, #2EC4B6 0%, #2EC4B6 100%);"></div>
+        <div class="lg:hidden absolute top-0 bottom-0 left-[27px] w-[2px]" style="background: linear-gradient(180deg, #2EC4B6 0%, #2EC4B6 100%);"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-7 gap-8 lg:gap-4">
+          {processSteps.map((step, i) => (
+            <div class="relative section-reveal flex lg:flex-col items-start lg:items-center gap-4 lg:gap-0" style={`transition-delay: ${i * 120}ms`}>
+              <div class="relative flex-shrink-0 w-[56px] h-[56px] rounded-full flex items-center justify-center z-10" style="background: linear-gradient(135deg, rgba(46,196,182,0.1) 0%, rgba(46,196,182,0.05) 100%); border: 2px solid #2EC4B6;">
+                <span class="text-lg font-black" style="color: #2EC4B6;">{step.num}</span>
+              </div>
+              <div class="lg:text-center lg:mt-6 flex-1">
+                <h4 class="text-lg font-bold" style="color: #001233;">{step.title}</h4>
+                <p class="mt-2 text-sm leading-relaxed" style="color: #64748B;">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR COMMITMENT -->
+  <section id="commitment" class="py-16 lg:py-32 relative overflow-hidden" style="background: #001845;">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-reveal">
+        <p class="text-sm font-medium tracking-[0.15em] uppercase mb-3" style="color: #D4A843;">OUR COMMITMENT</p>
+        <div class="w-[60px] h-[2px] mx-auto mb-6" style="background: #D4A843;"></div>
+        <h2 class="text-3xl lg:text-4xl font-bold text-white">我們的服務信念</h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #E0E7FF;">以專業、誠信、細心為核心，守護每一次搬遷</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {pillars.map((pillar, i) => (
+          <div class="section-reveal rounded-2xl p-8 lg:p-10 transition-all duration-400 hover:-translate-y-1 group" style={`background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(4px); transition-delay: ${i * 150}ms;`} onmouseenter="this.style.borderColor='rgba(212,168,67,0.3)';this.style.background='rgba(255,255,255,0.05)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)'">
+            <div class="mb-6 transition-transform duration-300 group-hover:scale-110" style="color: #D4A843;">
+              {pillar.icon === 'shield' && (
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              )}
+              {pillar.icon === 'truck' && (
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="2" y="7" rx="2" ry="2"/><path d="M16 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10"/><circle cx="17.5" cy="17.5" r="2.5"/><circle cx="6.5" cy="17.5" r="2.5"/></svg>
+              )}
+              {pillar.icon === 'heart' && (
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              )}
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">{pillar.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #E0E7FF;">{pillar.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-16 lg:py-24" style="background: #FFFBF5;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-reveal">
+        <p class="text-sm font-medium tracking-[0.15em] uppercase mb-3" style="color: #2EC4B6;">OUR SERVICES</p>
+        <div class="w-[60px] h-[2px] mx-auto mb-6" style="background: #D4A843;"></div>
+        <h2 class="text-3xl lg:text-4xl font-bold" style="color: #001233;">專業服務項目</h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #64748B;">全方位搬家解決方案，滿足您的各種搬遷需求</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service, i) => (
+          <a href={service.link} class="section-reveal group block rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-2" style={`background: #FFFFFF; border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06); transition-delay: ${i * 80}ms;`} onmouseenter="this.style.borderColor='#2EC4B6';this.style.boxShadow='0 20px 40px rgba(0,18,51,0.12)';" onmouseleave="this.style.borderColor='#FFE8CC';this.style.boxShadow='0 4px 16px rgba(0,18,51,0.06)';">
+            <div class="h-[200px] flex items-center justify-center p-6 overflow-hidden" style="background: linear-gradient(135deg, rgba(2,62,125,0.05) 0%, rgba(46,196,182,0.05) 100%);">
+              <img src={service.img} alt={service.title} class="w-full h-full object-contain transition-transform duration-400 group-hover:scale-105" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold mb-2" style="color: #001233;">{service.title}</h3>
+              <p class="text-sm leading-relaxed line-clamp-2" style="color: #64748B;">{service.desc}</p>
+              <span class="inline-flex items-center mt-4 text-sm font-semibold" style="color: #2EC4B6;">了解更多<svg class="ml-1 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTICS -->
+  <section id="stats" class="py-16 lg:py-20 relative overflow-hidden" style="background: #023E7D;">
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212,168,67,0.3) 10px, rgba(212,168,67,0.3) 11px);"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {stats.map((stat, i) => (
+          <div class="text-center section-reveal" style={`transition-delay: ${i * 100}ms`}>
+            <div class="flex justify-center mb-3" style="color: rgba(255,255,255,0.3);">
+              {stat.icon === 'calendar' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>}
+              {stat.icon === 'truck' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="13" height="13" x="2" y="7" rx="2" ry="2"/><path d="M16 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10"/><circle cx="17.5" cy="17.5" r="2.5"/><circle cx="6.5" cy="17.5" r="2.5"/></svg>}
+              {stat.icon === 'box' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>}
+              {stat.icon === 'users' && <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+            </div>
+            <div class="flex items-baseline justify-center">
+              <span class="stat-number text-5xl lg:text-6xl font-black leading-none" style="color: #D4A843; font-feature-settings: 'tnum';" data-target={stat.num}>0</span>
+              <span class="text-2xl font-bold ml-1" style="color: #E8C872;">{stat.suffix}</span>
+            </div>
+            <p class="mt-2 text-base font-medium text-white">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-16 lg:py-24" style="background: #FFF5E6;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-reveal">
+        <p class="text-sm font-medium tracking-[0.15em] uppercase mb-3" style="color: #2EC4B6;">TESTIMONIALS</p>
+        <div class="w-[60px] h-[2px] mx-auto mb-6" style="background: #D4A843;"></div>
+        <h2 class="text-3xl lg:text-4xl font-bold" style="color: #001233;">客戶真實評價</h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #64748B;">Google 評分 <span class="font-bold" style="color: #D4A843;">4.8★</span> (157則評論)</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.map((t, i) => (
+          <div class="section-reveal rounded-2xl p-6 lg:p-8 relative" style={`background: #FFFFFF; border-left: 4px solid #D4A843; box-shadow: 0 4px 20px rgba(0,18,51,0.06); transition-delay: ${i * 100}ms;`}>
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: t.rating }).map(() => (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A843" stroke="#D4A843" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+            <p class="text-base italic leading-relaxed mb-6" style="color: #001233;"><span class="text-2xl font-serif leading-none mr-1" style="color: #E8C872;">"</span>{t.quote}<span class="text-2xl font-serif leading-none ml-1" style="color: #E8C872;">"</span></p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: linear-gradient(135deg, #023E7D 0%, #0353A4 100%);">{t.name[0]}</div>
+              <div>
+                <p class="text-sm font-semibold" style="color: #001233;">{t.name}</p>
+                <p class="text-xs" style="color: #64748B;">{t.service}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="py-16 lg:py-24 xl:py-32 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0,24,69,0.95) 0%, rgba(2,62,125,0.92) 50%, rgba(0,18,51,0.95) 100%);">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-[10%] w-[200px] h-[200px] rounded-full opacity-[0.06]" style="background: #D4A843; filter: blur(80px);"></div>
+      <div class="absolute bottom-1/4 right-[10%] w-[200px] h-[200px] rounded-full opacity-[0.06]" style="background: #2EC4B6; filter: blur(80px);"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="section-reveal">
+        <p class="text-sm font-medium tracking-[0.15em] uppercase mb-4" style="color: #4FD1C5;">立即聯繫我們</p>
+        <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-white">讓志連搬家為您服務</h2>
+        <p class="mt-4 text-lg" style="color: #E0E7FF;">24小時全天候服務，一通電話，專人即刻為您安排</p>
+
+        <div class="mt-10">
+          <a href="tel:0919073191" class="inline-flex items-center justify-center gap-3 px-10 py-5 text-xl font-bold rounded-xl transition-all duration-300 hover:-translate-y-1 cta-pulse" style="background: linear-gradient(135deg, #D4A843 0%, #B88D2E 100%); color: #001233; box-shadow: 0 8px 30px rgba(212,168,67,0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0919-073191
+          </a>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg text-white transition-all duration-300 hover:opacity-90" style="background: #06C755;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755z"/></svg>LINE 諮詢
+          </a>
+          <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg text-white border border-white/30 transition-all duration-300 hover:bg-white/10">填寫表單</a>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 lg:gap-10 mt-10">
+          <div class="flex items-center gap-2" style="color: #E0E7FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="text-sm">24hr 全天候</span></div>
+          <div class="flex items-center gap-2" style="color: #E0E7FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="text-sm">免費估價</span></div>
+          <div class="flex items-center gap-2" style="color: #E0E7FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4FD1C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="text-sm">契約保障</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .cta-pulse { animation: ctaPulse 2s ease-in-out infinite; }
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(212,168,67,0.3); }
+    50% { box-shadow: 0 12px 40px rgba(212,168,67,0.55); }
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const animateCounter = (el, target, duration = 2000) => {
+    const startTime = performance.now();
+    const update = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(easeOut * target);
+      el.textContent = current.toLocaleString();
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target.toLocaleString();
+    };
+    requestAnimationFrame(update);
+  };
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target || '0', 10);
+        if (target > 0) animateCounter(el, target, 2000);
+        statObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+  });
+
+  const heroSection = document.getElementById('hero');
+  const heroIllustration = document.querySelector('.hero-illustration');
+  if (heroSection && heroIllustration) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection.offsetHeight;
+      if (scrollY < heroHeight) {
+        heroIllustration.style.transform = `translateY(calc(-50% + ${scrollY * 0.15}px))`;
+        heroIllustration.style.opacity = String(0.9 - (scrollY / heroHeight) * 0.5);
+      }
+    }, { passive: true });
+  }
+</script>

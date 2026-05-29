@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    color: #334155;
+    background-color: #FFFBF5;
+  }
+}
+
+@layer components {
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .section-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold text-navy-900 rounded-lg transition-all duration-300;
+    background: linear-gradient(135deg, #D4A843 0%, #B88D2E 100%);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(212,168,67,0.3);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3.5 font-semibold border-2 border-navy-600 text-navy-600 rounded-lg transition-all duration-300 bg-transparent;
+  }
+  .btn-secondary:hover {
+    @apply bg-navy-600 text-white;
+  }
+}

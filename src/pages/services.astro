@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = '服務項目｜志連精緻搬家｜台中搬家推薦';
+const description = '志連精緻搬家提供六大專業服務：搬家搬遷、貨物運送、公司/工廠遷移、精緻搬遷、大型物品搬移、吊車搬家。全方位搬家解決方案，滿足您的各種搬遷需求。';
+
+const services = [
+  {
+    id: 'residential', tag: '家庭搬家', title: '台中搬家搬遷',
+    description: '提供住家與一般空間的搬家搬遷服務，包含家具拆裝、物品分類裝箱、保護包覆與搬運等完整作業，依實際現場狀況規劃合適流程。',
+    features: ['家具拆裝與保護包覆', '物品分類裝箱服務', '專業搬運動線規劃', '新址家具定位擺放'],
+    detail: '由熟悉搬家動線的工作人員執行，重視物品安全與搬運順序，讓整體搬遷過程有條理、不混亂，協助客戶順利完成新舊空間的轉換。',
+  },
+  {
+    id: 'cargo', tag: '貨運物流', title: '台中貨物運送',
+    description: '提供南北往返貨物運送服務，依貨品性質安排合適車型，確保運送過程安全準時。',
+    features: ['南北長途貨物運送', '依貨品特性安排車型', '定時配送與追蹤', '貨物保險保障'],
+    detail: '無論是單件大型貨物還是批量物品運送，我們都能依據貨物的性質、體積與重量，安排最適合的車輛與路線，確保貨物安全準時送達目的地。',
+  },
+  {
+    id: 'corporate', tag: '企業搬遷', title: '台中公司／工廠遷移',
+    description: '專業處理辦公設備、重要文件與機械搬遷，協助企業快速完成整體遷移作業。',
+    features: ['辦公設備拆裝搬運', '重要文件安全處理', '機械設備專業搬遷', '搬遷後復原定位'],
+    detail: '企業搬遷涉及大量設備與文件，我們會事先與企業方詳細規劃搬遷時程與動線，在最少影響營運的情況下，快速且安全地完成整體遷移作業。',
+  },
+  {
+    id: 'delicate', tag: '特殊物品', title: '台中精緻搬遷',
+    description: '針對金庫、音響與私人收藏品進行專業搬運，採用加強保護方式降低損壞風險。',
+    features: ['金庫保險櫃專業搬運', '音響設備防震保護', '藝術品與收藏品包裝', '特殊包材加強防護'],
+    detail: '精緻物品搬運需要額外的專業知識與設備，我們使用專用包材與防震措施，針對不同材質與重量的珍貴物品，制定專屬的搬運方案。',
+  },
+  {
+    id: 'heavy', tag: '重物搬運', title: '台中大型物品搬移',
+    description: '承接鋼琴、家電與重型設備搬運，依重量與空間條件規劃安全搬移方式。',
+    features: ['鋼琴專業搬運', '大型家電搬移', '重型設備吊裝', '樓梯與狹窄空間搬運'],
+    detail: '大型與重型物品搬運是我們的專長之一，依據物品的重量、尺寸與現場空間條件，規劃最安全的搬移方式，必要時配合吊車進行作業。',
+  },
+  {
+    id: 'crane', tag: '吊車服務', title: '台中吊車搬家',
+    description: '提供吊卸與起重搬運服務，適用高樓層與特殊環境，提升搬遷安全與效率。',
+    features: ['高樓層吊卸服務', '大型家具吊運', '特殊環境搬運', '專業起重設備'],
+    detail: '當搬運物品無法透過樓梯或電梯進出時，吊車搬家是最佳選擇。我們配合專業吊車設備與操作人員，安全地將物品吊運至指定樓層。',
+  },
+];
+
+const comparisonFeatures = [
+  { name: '免費到府估價', residential: true, cargo: true, corporate: true, delicate: true, heavy: true, crane: true },
+  { name: '家具拆裝', residential: true, cargo: false, corporate: true, delicate: true, heavy: true, crane: true },
+  { name: '物品包裝', residential: true, cargo: true, corporate: true, delicate: true, heavy: true, crane: true },
+  { name: '南北運送', residential: false, cargo: true, corporate: true, delicate: true, heavy: false, crane: false },
+  { name: '吊車配合', residential: false, cargo: false, corporate: false, delicate: false, heavy: true, crane: true },
+  { name: '精密儀器保護', residential: false, cargo: false, corporate: false, delicate: true, heavy: false, crane: false },
+  { name: '契約保障', residential: true, cargo: true, corporate: true, delicate: true, heavy: true, crane: true },
+  { name: '事後定位', residential: true, cargo: false, corporate: true, delicate: true, heavy: true, crane: true },
+];
+
+const processSteps = ['電話諮詢', '免費估價', '契約簽訂', '紙箱提供', '搬遷服務', '家具定位', '驗收完成'];
+
+const faqItems = [
+  { q: '搬家前需要做哪些準備？', a: '建議您提前整理物品、分類標記，貴重物品與重要文件請自行保管。我們也提供搬家紙箱與包材，可事先向客服索取。' },
+  { q: '搬家費用如何計算？', a: '搬家費用依搬運距離、物品數量、樓層高度、是否需要拆裝等因素綜合評估。我們提供免費到府估價，報價透明無隱藏費用。' },
+  { q: '有提供搬家紙箱嗎？', a: '是的，我們提供專業搬家紙箱與包材，可依需求數量事先準備，讓您打包更方便。' },
+  { q: '可以臨時預約搬家嗎？', a: '我們提供24小時服務，建議提前3-7天預約以確保檔期。緊急需求也可來電洽詢，我們會盡力協助安排。' },
+  { q: '貴重物品如何保障？', a: '我們會使用專業包材妥善保護，並可協助辦理搬運保險。貴重物品建議您事先告知，我們會特別加強防護措施。' },
+  { q: '搬家當天需要多長時間？', a: '依搬運量與距離而定，一般家庭搬家約3-6小時，公司搬遷則視規模而定。我們會在估價時提供預估時間。' },
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero -->
+  <section class="relative min-h-[360px] md:min-h-[45vh] flex items-center justify-center overflow-hidden" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%);">
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 24px 24px;"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-12">
+      <nav class="mb-6 text-sm text-left md:text-center">
+        <ol class="flex items-center gap-2 text-white/60 justify-start md:justify-center">
+          <li><a href="/" class="hover:text-white transition-colors">首頁</a></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/40"><path d="m9 18 6-6-6-6"/></svg></li>
+          <li class="text-white">服務項目</li>
+        </ol>
+      </nav>
+      <p class="text-gold-400 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-4 hero-overline opacity-0">OUR SERVICES</p>
+      <h1 class="text-3xl md:text-4xl font-black text-white leading-tight hero-heading opacity-0" style="text-shadow: 0 4px 20px rgba(0,18,51,0.3);">專業服務項目</h1>
+      <p class="text-lg text-white/80 mt-4 max-w-2xl mx-auto hero-subtitle opacity-0">全方位搬家解決方案，滿足您的各種搬遷需求</p>
+    </div>
+  </section>
+
+  <!-- Service Cards -->
+  <section class="py-16 md:py-24" style="background: #FFFBF5;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">WHAT WE OFFER</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-3">六大專業服務</h2>
+        <p class="text-navy-600 max-w-xl mx-auto">從家庭搬家到吊車搬運，為您提供最適合的搬遷方案</p>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <div class="service-card bg-white rounded-2xl overflow-hidden transition-all duration-400" style="border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
+            <div class="h-[180px] md:h-[200px] flex items-center justify-center p-6 relative" style="background: linear-gradient(135deg, rgba(2,62,125,0.06) 0%, rgba(46,196,182,0.06) 100%);">
+              <svg viewBox="0 0 200 140" class="w-full h-full max-w-[200px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {service.id === 'residential' && (
+                  <><rect x="20" y="50" width="80" height="60" rx="6" fill="#023E7D" opacity="0.8"/><path d="M15 50 L60 15 L105 50 Z" fill="#D4A843" opacity="0.8"/><rect x="40" y="75" width="20" height="25" rx="3" fill="white" opacity="0.5"/><rect x="70" y="65" width="18" height="18" rx="3" fill="white" opacity="0.4"/><rect x="95" y="70" width="40" height="35" rx="5" fill="#2EC4B6" opacity="0.5"/><rect x="140" y="55" width="45" height="50" rx="5" fill="#E8C872" opacity="0.6"/><circle cx="35" cy="40" r="8" fill="#E8C872" opacity="0.6"/></>
+                )}
+                {service.id === 'cargo' && (
+                  <><rect x="40" y="55" width="110" height="55" rx="8" fill="#023E7D" opacity="0.8"/><rect x="150" y="70" width="35" height="40" rx="6" fill="#023E7D" opacity="0.8"/><circle cx="75" cy="120" r="14" fill="#334155"/><circle cx="165" cy="120" r="14" fill="#334155"/><rect x="50" y="65" width="30" height="22" rx="3" fill="white" opacity="0.3"/><rect x="90" y="60" width="25" height="30" rx="3" fill="#D4A843" opacity="0.6"/></>
+                )}
+                {service.id === 'corporate' && (
+                  <><rect x="30" y="30" width="70" height="80" rx="5" fill="#0353A4" opacity="0.6"/><rect x="110" y="40" width="65" height="70" rx="5" fill="#023E7D" opacity="0.7"/><rect x="40" y="45" width="20" height="25" rx="2" fill="white" opacity="0.3"/><rect x="70" y="45" width="18" height="25" rx="2" fill="white" opacity="0.3"/><rect x="120" y="55" width="22" height="30" rx="2" fill="white" opacity="0.3"/><rect x="50" y="80" width="40" height="20" rx="3" fill="#D4A843" opacity="0.4"/></>
+                )}
+                {service.id === 'delicate' && (
+                  <><rect x="55" y="40" width="90" height="70" rx="6" fill="#023E7D" opacity="0.6"/><rect x="65" y="50" width="70" height="50" rx="4" fill="#D4A843" opacity="0.3"/><rect x="80" y="30" width="40" height="20" rx="10" fill="#2EC4B6" opacity="0.5"/><circle cx="100" cy="75" r="18" fill="#E8C872" opacity="0.5"/><path d="M92 75 L98 81 L110 69" stroke="#023E7D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></>
+                )}
+                {service.id === 'heavy' && (
+                  <><rect x="50" y="50" width="100" height="65" rx="8" fill="#023E7D" opacity="0.7"/><rect x="60" y="55" width="80" height="55" rx="4" fill="white" opacity="0.2"/><rect x="75" y="30" width="50" height="25" rx="4" fill="#D4A843" opacity="0.5"/><circle cx="85" cy="40" r="6" fill="#2EC4B6" opacity="0.5"/><circle cx="115" cy="40" r="6" fill="#2EC4B6" opacity="0.5"/></>
+                )}
+                {service.id === 'crane' && (
+                  <><rect x="140" y="20" width="10" height="90" rx="3" fill="#023E7D" opacity="0.6"/><path d="M145 20 L100 55 L145 55 Z" fill="#0353A4" opacity="0.5"/><line x1="100" y1="55" x2="100" y2="80" stroke="#D4A843" stroke-width="2" opacity="0.6"/><rect x="75" y="80" width="50" height="35" rx="5" fill="#2EC4B6" opacity="0.4"/><rect x="30" y="50" width="55" height="65" rx="5" fill="#023E7D" opacity="0.5"/></>
+                )}
+              </svg>
+            </div>
+            <div class="p-7">
+              <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full" style="background: rgba(46,196,182,0.1); color: #26A69A;">{service.tag}</span>
+              <h3 class="text-lg font-bold text-navy-900 mt-3">{service.title}</h3>
+              <p class="text-sm text-navy-600 leading-relaxed mt-2">{service.description}</p>
+              <ul class="mt-4 space-y-1.5">
+                {service.features.map(feature => (
+                  <li class="flex items-center gap-2 text-sm text-navy-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2EC4B6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <p class="text-sm text-navy-500 leading-relaxed mt-4 pt-4 border-t border-warm-200">{service.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">COMPARISON</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-4">服務內容比較</h2>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto"></div>
+      </div>
+      
+      <div class="overflow-x-auto rounded-2xl section-reveal" style="border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
+        <table class="w-full min-w-[700px]">
+          <thead>
+            <tr style="background: #023E7D;">
+              <th class="text-white font-semibold text-left px-4 py-4 min-w-[140px]">服務項目</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">搬家搬遷</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">貨物運送</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">公司遷移</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">精緻搬遷</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">大型物品</th>
+              <th class="text-white font-semibold text-center px-3 py-4 text-sm">吊車搬家</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonFeatures.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'bg-warm-50' : 'bg-white'} style="border-bottom: 1px solid #FFE8CC;">
+                <td class="font-semibold text-navy-800 px-4 py-3.5 text-sm" style="background: #FFF5E6;">{row.name}</td>
+                {['residential','cargo','corporate','delicate','heavy','crane'].map(key => (
+                  <td class="text-center px-3 py-3.5">
+                    {row[key as keyof typeof row] ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mx-auto"><path d="M20 6 9 17l-5-5"/></svg>
+                    ) : (
+                      <span class="text-navy-400">—</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="py-16 md:py-20" style="background: #001845;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">服務流程一覽</h2>
+        <p class="text-white/70">從諮詢到完成，七個步驟讓您輕鬆搬家</p>
+      </div>
+      
+      <div class="relative section-reveal">
+        <div class="hidden md:block absolute top-5 left-0 right-0 h-0.5" style="background: rgba(46,196,182,0.3);"></div>
+        <div class="grid grid-cols-2 md:grid-cols-7 gap-6 md:gap-4 relative z-10">
+          {processSteps.map((step, i) => (
+            <div class="flex flex-col items-center text-center">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm mb-3" style="background: #2EC4B6;">{i + 1}</div>
+              <span class="text-white/90 text-sm font-medium">{step}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-24" style="background: #FFFBF5;">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">FAQ</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-4">常見問題</h2>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto"></div>
+      </div>
+      
+      <div class="space-y-3 section-reveal" id="faq-accordion">
+        {faqItems.map((item, i) => (
+          <div class="faq-item bg-white rounded-xl overflow-hidden" style="border: 1px solid #FFE8CC;">
+            <button class="faq-question w-full flex items-center justify-between px-5 py-4 md:px-6 md:py-5 text-left cursor-pointer transition-colors hover:bg-warm-50" data-index={i}>
+              <span class="font-semibold text-navy-900 pr-4">{item.q}</span>
+              <svg class="faq-chevron flex-shrink-0 transition-transform duration-300 text-navy-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer hidden">
+              <div class="px-5 pb-4 md:px-6 md:pb-5 text-navy-600 leading-relaxed text-sm" style="line-height: 1.7;">{item.a}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 relative overflow-hidden" style="background: #FFF5E6;">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(212,168,67,0.08) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center section-reveal">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy-900 mb-4">需要搬家服務？</h2>
+      <p class="text-navy-600 mb-8">立即聯繫我們，獲得免費專業估價</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact/" class="btn-primary">免費諮詢<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a href="/portfolio/" class="inline-flex items-center font-semibold text-teal-600 hover:text-teal-700 transition-colors">查看搬家實績<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-overline { animation: fadeInUp 0.4s ease-out 0.2s forwards; }
+  .hero-heading { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+  .hero-subtitle { animation: fadeInUp 0.4s ease-out 0.5s forwards; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+  .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,18,51,0.12); border-color: #2EC4B6; }
+  .faq-answer { transition: all 0.3s ease-out; }
+  .faq-chevron.rotate-180 { transform: rotate(180deg); }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const chevron = item.querySelector('.faq-chevron');
+      question?.addEventListener('click', () => {
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) {
+            other.querySelector('.faq-answer')?.classList.add('hidden');
+            other.querySelector('.faq-chevron')?.classList.remove('rotate-180');
+          }
+        });
+        answer?.classList.toggle('hidden');
+        chevron?.classList.toggle('rotate-180');
+      });
+    });
+  });
+</script>

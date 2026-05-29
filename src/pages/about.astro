@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = '關於我們｜志連精緻搬家｜台中搬家推薦';
+const description = '志連精緻搬家以實務經驗為核心，長期服務住家、公司與各類搬遷需求。了解我們的服務理念、核心價值觀與發展歷程。';
+
+const timelineItems = [
+  { year: '2006', title: '公司成立', desc: '志連精緻搬家在台中正式成立，開始提供專業搬家服務。' },
+  { year: '2010', title: '擴大車隊', desc: '增購專業搬家車輛，擴大服務範圍至全台各地。' },
+  { year: '2015', title: '吊車服務', desc: '新增吊車搬家服務，滿足高樓層與特殊環境搬遷需求。' },
+  { year: '2018', title: '企業搬遷', desc: '開始專攻企業與工廠搬遷服務，建立標準化作業流程。' },
+  { year: '2022', title: '數位轉型', desc: '導入線上估價與預約系統，提升客戶服務效率。' },
+  { year: '2024', title: '持續成長', desc: '累積服務超過1,500位客戶，持續優化服務品質。' },
+];
+
+const pillars = [
+  {
+    icon: 'target',
+    title: '我們在做的事情',
+    desc: '志連精緻搬家是一支以實務經驗為核心的搬家團隊，長期服務住家、公司與各類搬遷需求，重視每一次搬運過程中的安全與細節控管。我們不走制式流程，而是依照現場狀況調整做法，確保物品在移動、運送與定位的每個環節都能被妥善處理。'
+  },
+  {
+    icon: 'process',
+    title: '我們怎麼執行',
+    desc: '從初步聯繫、現場評估到實際搬遷作業，志連搬家皆由熟悉流程的工作人員親自執行，避免轉包造成的溝通落差。針對不同物品與空間條件，安排合適人力、車型與保護方式，讓搬家進行得有條理、不倉促，也不增加不必要的風險。'
+  },
+  {
+    icon: 'tools',
+    title: '我們提供的服務',
+    desc: '志連搬家承接一般家庭搬遷、公司行號與工廠遷移、貨物運送、精緻物品搬遷、大型家具與設備搬移，以及吊車配合搬家作業。所有服務皆以實際需求為出發點進行規劃，清楚說明、如實執行，讓客戶知道每一步在做什麼，也知道費用花在什麼地方。'
+  },
+];
+
+const values = [
+  {
+    icon: 'heart',
+    title: '誠信為本',
+    desc: '以誠實透明的態度面對每一位客戶，報價清晰、服務實在，絕不中途加價或隱藏費用。'
+  },
+  {
+    icon: 'award',
+    title: '專業執行',
+    desc: '持續精進搬運技術與設備，每位工作人員皆受過專業訓練，確保服務品質穩定可靠。'
+  },
+  {
+    icon: 'shield',
+    title: '負責到底',
+    desc: '從接洽到結案全程跟進，出現問題主動面對、積極解決，讓客戶無後顧之憂。'
+  },
+  {
+    icon: 'eye',
+    title: '細心呵護',
+    desc: '視客戶物品如己出，每個環節都仔細檢查、妥善保護，不放過任何可能影響品質的細節。'
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Section 1: Page Hero -->
+  <section class="relative min-h-[400px] md:min-h-[50vh] flex items-center justify-center overflow-hidden" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%);">
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 24px 24px;"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-12">
+      <nav class="mb-6 text-sm text-left md:text-center">
+        <ol class="flex items-center gap-2 text-white/60 justify-start md:justify-center">
+          <li><a href="/" class="hover:text-white transition-colors">首頁</a></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/40"><path d="m9 18 6-6-6-6"/></svg></li>
+          <li class="text-white">關於我們</li>
+        </ol>
+      </nav>
+      
+      <p class="text-gold-400 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-4 hero-overline opacity-0">ABOUT US</p>
+      <h1 class="text-3xl md:text-[3.5rem] font-black text-white leading-tight hero-heading opacity-0" style="text-shadow: 0 4px 20px rgba(0,18,51,0.3);">關於志連搬家</h1>
+      <p class="text-lg text-white/80 mt-4 max-w-2xl mx-auto hero-subtitle opacity-0">以專業與誠信，守護每一次搬遷託付</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Our Story -->
+  <section class="py-16 md:py-24" style="background: #FFFBF5;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="section-reveal">
+          <div class="rounded-2xl overflow-hidden shadow-lg" style="box-shadow: 0 8px 32px rgba(0,18,51,0.1);">
+            <div class="aspect-[4/3] flex items-center justify-center" style="background: linear-gradient(135deg, rgba(2,62,125,0.06) 0%, rgba(46,196,182,0.06) 100%);">
+              <svg viewBox="0 0 400 300" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="400" height="300" fill="url(#aboutGrad)" opacity="0.3"/>
+                <rect x="40" y="140" width="120" height="80" rx="8" fill="#023E7D"/>
+                <rect x="160" y="160" width="50" height="60" rx="8" fill="#023E7D"/>
+                <circle cx="80" cy="230" r="15" fill="#334155"/>
+                <circle cx="180" cy="230" r="15" fill="#334155"/>
+                <rect x="50" y="155" width="50" height="30" rx="4" fill="white" opacity="0.3"/>
+                <circle cx="260" cy="100" r="18" fill="#E8C872"/>
+                <rect x="240" y="120" width="40" height="55" rx="8" fill="#023E7D"/>
+                <rect x="230" y="170" width="15" height="45" rx="7" fill="#334155"/>
+                <rect x="275" y="170" width="15" height="45" rx="7" fill="#334155"/>
+                <circle cx="320" cy="110" r="16" fill="#D4A843"/>
+                <rect x="302" y="128" width="36" height="50" rx="7" fill="#0353A4"/>
+                <rect x="230" y="80" width="60" height="35" rx="5" fill="#2EC4B6" opacity="0.8"/>
+                <rect x="50" y="70" width="35" height="35" rx="4" fill="#D4A843" opacity="0.7"/>
+                <rect x="90" y="85" width="30" height="30" rx="4" fill="#2EC4B6" opacity="0.6"/>
+                <path d="M320 200 L360 160 L400 200 V250 H320 Z" fill="#E8C872" opacity="0.3"/>
+                <rect y="260" width="400" height="40" fill="#0353A4" opacity="0.1"/>
+                <defs><linearGradient id="aboutGrad" x1="0" y1="0" x2="400" y2="300"><stop offset="0%" stop-color="#023E7D" stop-opacity="0.05"/><stop offset="100%" stop-color="#2EC4B6" stop-opacity="0.05"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section-reveal">
+          <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">OUR STORY</p>
+          <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-4">志連精緻搬家的故事</h2>
+          <div class="w-[60px] h-[2px] bg-gold-400 mb-6"></div>
+          <p class="text-navy-700 leading-relaxed mb-4">志連精緻搬家是一支以實務經驗為核心的搬家團隊，長期服務住家、公司與各類搬遷需求，重視每一次搬運過程中的安全與細節控管。我們不走制式流程，而是依照現場狀況調整做法，確保物品在移動、運送與定位的每個環節都能被妥善處理。</p>
+          <p class="text-navy-700 leading-relaxed mb-6">從成立至今，我們始終堅持以客戶需求為導向，不斷提升服務品質與專業技能。每一位志連搬家的成員都經過嚴格的培訓，熟悉各類搬運技巧與安全規範，讓客戶能夠安心將珍貴的物品託付給我們。</p>
+          <a href="/services/" class="btn-secondary">了解更多服務<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: How We Work -->
+  <section class="py-16 md:py-24" style="background: #001845;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-gold-400 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">OUR APPROACH</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">我們的服務理念</h2>
+        <p class="text-white/70 max-w-xl mx-auto">從評估到完成，每個環節都親力親為</p>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {pillars.map((pillar) => (
+          <div class="pillar-card rounded-2xl p-8 lg:p-10 transition-all duration-400 hover:-translate-y-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: rgba(212,168,67,0.1);">
+              {pillar.icon === 'target' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>}
+              {pillar.icon === 'process' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="6" x="3" y="14" rx="2"/><rect width="8" height="6" x="13" y="4" rx="2"/><path d="M7 14v-4a2 2 0 0 1 2-2h4"/><path d="M17 4v4a2 2 0 0 1-2 2h-4"/></svg>}
+              {pillar.icon === 'tools' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>}
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">{pillar.title}</h3>
+            <p class="text-white/70 leading-relaxed text-sm">{pillar.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Our Values -->
+  <section class="py-16 md:py-24" style="background: #FFFBF5;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">OUR VALUES</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-4">核心價值觀</h2>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((value) => (
+          <div class="value-card bg-white rounded-2xl p-8 text-center transition-all duration-350 hover:-translate-y-1.5" style="border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, rgba(2,62,125,0.08) 0%, rgba(46,196,182,0.08) 100%);">
+              {value.icon === 'heart' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#023E7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>}
+              {value.icon === 'award' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#023E7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>}
+              {value.icon === 'shield' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#023E7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>}
+              {value.icon === 'eye' && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#023E7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>}
+            </div>
+            <h4 class="text-lg font-bold text-navy-900 mt-4 mb-2">{value.title}</h4>
+            <p class="text-sm text-navy-600 leading-relaxed">{value.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Timeline -->
+  <section class="py-16 md:py-24" style="background: #FFF5E6;">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-reveal">
+        <p class="text-teal-500 text-sm font-medium tracking-[0.15em] uppercase font-inter mb-3">OUR JOURNEY</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-900 leading-tight mb-4">發展歷程</h2>
+        <div class="w-[60px] h-[2px] bg-gold-400 mx-auto"></div>
+      </div>
+      
+      <div class="relative section-reveal">
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] md:-translate-x-1/2" style="background: #D4A843;"></div>
+        
+        {timelineItems.map((item, i) => (
+          <div class={`relative flex items-start mb-10 md:mb-12 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div class="absolute left-6 md:left-1/2 w-4 h-4 rounded-full -translate-x-1/2 z-10" style="background: #D4A843; border: 3px solid #FFF5E6;"></div>
+            <div class={`ml-14 md:ml-0 md:w-[45%] ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+              <div class="bg-white rounded-xl p-6" style="box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
+                <span class="text-gold-500 font-bold text-lg">{item.year}</span>
+                <h4 class="text-navy-900 font-bold mt-1 mb-2">{item.title}</h4>
+                <p class="text-sm text-navy-600 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: CTA -->
+  <section class="py-16 md:py-20 relative overflow-hidden" style="background: #023E7D;">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, rgba(212,168,67,0.08) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center section-reveal">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">準備好搬家了嗎？</h2>
+      <p class="text-white/70 mb-8">讓志連搬家為您提供專業、安心的搬遷服務</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact/" class="btn-primary">立即聯絡我們<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a href="/services/" class="inline-flex items-center justify-center px-8 py-4 font-semibold text-white rounded-lg transition-all duration-300 hover:bg-white/20" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">查看服務項目</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-overline { animation: fadeInUp 0.4s ease-out 0.2s forwards; }
+  .hero-heading { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+  .hero-subtitle { animation: fadeInUp 0.4s ease-out 0.5s forwards; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .pillar-card { transition: all 0.4s ease; }
+  .pillar-card:hover { border-color: rgba(212,168,67,0.3) !important; transform: translateY(-4px); }
+  .value-card { transition: all 0.35s ease; }
+  .value-card:hover { border-color: #2EC4B6; box-shadow: 0 8px 24px rgba(0,18,51,0.1); }
+</style>

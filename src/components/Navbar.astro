@@ -1,0 +1,102 @@
+---
+const navLinks = [
+  { href: '/', label: '首頁' },
+  { href: '/about/', label: '關於我們' },
+  { href: '/services/', label: '服務項目' },
+  { href: '/portfolio/', label: '搬家實績' },
+  { href: '/news/', label: '最新消息' },
+  { href: '/contact/', label: '聯絡我們' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(0, 24, 69, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <!-- Logo -->
+      <a href="/" class="flex flex-col items-start">
+        <span class="text-white font-bold text-xl tracking-wide">志連精緻搬家</span>
+        <span class="text-gold-300 text-xs tracking-wider">政府合法立案</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors duration-200 hover:text-white ${
+              currentPath === link.href ? 'text-gold-400' : 'text-white/80'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="tel:0919073191" class="flex items-center gap-2 text-white/90 text-sm font-medium hover:text-gold-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0919-073191
+        </a>
+        <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="btn-primary text-sm py-2.5 px-5">
+          免費諮詢
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="打開選單">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden fixed inset-0 top-[72px] z-40" style="background: rgba(0, 24, 69, 0.98);">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`text-2xl font-medium transition-colors duration-200 hover:text-gold-400 ${
+            currentPath === link.href ? 'text-gold-400' : 'text-white/90'
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="tel:0919073191" class="flex items-center gap-2 text-gold-400 text-lg font-medium mt-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0919-073191
+      </a>
+      <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="btn-primary mt-2">
+        LINE 免費諮詢
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+  });
+
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
+</script>

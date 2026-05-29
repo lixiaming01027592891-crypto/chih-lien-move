@@ -1,0 +1,68 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = '志連精緻搬家｜台中搬家推薦｜專業搬家公司',
+  description = '志連精緻搬家是台中專業搬家公司，政府合法立案，提供住家搬家、公司搬遷、貨物運送、精緻搬遷、大型物品搬移、吊車搬家等服務。18年經驗，1,500+服務客戶，服務專線0919-073191。'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="台中搬家, 搬家公司, 精緻搬家, 吊車搬家, 公司搬遷, 貨物運送, 搬家推薦" />
+  <meta name="author" content="志連精緻搬家" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-warm-50 font-sans antialiased">
+  <Navbar />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<script>
+  // Section reveal on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.section-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
