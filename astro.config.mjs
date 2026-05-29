@@ -8,6 +8,6 @@ export default defineConfig({
   output: 'static',
   site: 'https://clmove.pages.dev',
   build: {
-    format: 'directory'
+    format: 'file'
   }
 });
