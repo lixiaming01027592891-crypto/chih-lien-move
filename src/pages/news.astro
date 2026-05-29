@@ -1,44 +1,266 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const newsArticles = [
+  {
+    id: 1,
+    date: '2025/12/15',
+    category: '搬家知識',
+    title: '搬家前必做的10件事',
+    excerpt: '搬家是一項繁瑣的工程，事先做好準備能讓整個過程更加順利。本文為您整理搬家前必做的十項準備工作，讓您輕鬆完成搬遷。',
+  },
+  {
+    id: 2,
+    date: '2025/11/28',
+    category: '公司公告',
+    title: '志連搬家年終優惠活動開跑',
+    excerpt: '為了感謝廣大客戶的支持，志連搬家推出年終限定搬家優惠方案，預約即享折扣，名額有限敬請把握。',
+  },
+  {
+    id: 3,
+    date: '2025/11/10',
+    category: '搬家知識',
+    title: '如何選擇適合的搬家公司？',
+    excerpt: '市面上搬家公司眾多，如何選擇一家可靠、專業的搬家公司？本文從五個面向為您深入分析與建議。',
+  },
+  {
+    id: 4,
+    date: '2025/10/22',
+    category: '常見問題',
+    title: '搬家費用計算方式完整說明',
+    excerpt: '搬家費用怎麼算？影響價格的因素有哪些？本文完整說明搬家費用的計算方式，讓您心裡有數。',
+  },
+  {
+    id: 5,
+    date: '2025/10/05',
+    category: '公司公告',
+    title: '新增吊車搬家服務項目',
+    excerpt: '為了提供更完善的吊車搬家服務，志連搬家近期新增專業吊車設備，可應對更高樓層與更複雜的搬運環境。',
+  },
+  {
+    id: 6,
+    date: '2025/09/18',
+    category: '搬家知識',
+    title: '易碎物品包裝技巧分享',
+    excerpt: '碗盤、玻璃製品、藝術品等易碎物品該如何包裝？專業搬家公司教您正確的包裝方法與技巧。',
+  },
+];
+
+const filterCategories = ['全部', '搬家知識', '公司公告', '常見問題'];
+
+const categoryColors: Record<string, string> = {
+  '搬家知識': '#2EC4B6',
+  '公司公告': '#0353A4',
+  '常見問題': '#0353A4',
+};
 ---
-<Layout title="最新消息｜志連精緻搬家｜台中搬家推薦" description="志連精緻搬家的最新動態、搬家知識分享與優惠活動資訊。">
-  <section class="pt-32 pb-16" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl lg:text-5xl font-black text-white">最新消息</h1>
-      <p class="mt-4 text-lg" style="color: #E0E7FF;">搬家知識、優惠活動與公司動態</p>
+
+<Layout title="最新消息｜志連精緻搬家｜台中搬家推薦" description="志連精緻搬家最新消息，包含搬家知識、公司公告、常見問題等實用搬家資訊。掌握最新搬家優惠與專業建議。">
+  <!-- Hero Section -->
+  <section class="relative flex items-center justify-center min-h-[320px]" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%); padding-top: 72px;">
+    <!-- Decorative glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(212,168,67,0.08) 0%, transparent 70%);"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-20">
+      <!-- Breadcrumb -->
+      <nav class="mb-6" aria-label="麵包屑">
+        <ol class="flex items-center justify-center gap-2 text-sm">
+          <li>
+            <a href="/" class="text-white/60 hover:text-gold-400 transition-colors">首頁</a>
+          </li>
+          <li class="text-white/40">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </li>
+          <li class="text-gold-400 font-medium">最新消息</li>
+        </ol>
+      </nav>
+      
+      <!-- Overline -->
+      <p class="text-gold-400 text-sm font-medium tracking-[0.15em] mb-4" style="font-family: 'Inter', sans-serif;">NEWS &amp; UPDATES</p>
+      
+      <!-- Heading -->
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4" style="line-height: 1.1; letter-spacing: -0.02em;">
+        最新消息
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl max-w-2xl mx-auto" style="color: #E0E7FF; line-height: 1.75;">
+        掌握志連搬家的最新動態與實用搬家資訊
+      </p>
     </div>
   </section>
-  <section class="py-16 lg:py-24" style="background: #FFFBF5;">
+
+  <!-- News Listing Section -->
+  <section class="py-16 md:py-24" style="background: #FFFBF5;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article class="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1" style="background: #FFFFFF; border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
-          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #023E7D 0%, #0353A4 100%);"><span class="text-white/60 text-sm">文章封面</span></div>
-          <div class="p-6">
-            <span class="text-xs font-medium" style="color: #2EC4B6;">搬家知識</span>
-            <h3 class="mt-2 text-lg font-bold" style="color: #001233;">搬家前必做的5件事</h3>
-            <p class="mt-2 text-sm" style="color: #64748B;">搬家前做好準備，讓搬遷過程更加順利。本文分享搬家前必須完成的5項重要準備工作...</p>
-            <span class="mt-4 inline-block text-xs" style="color: #94A3B8;">2024-12-15</span>
-          </div>
-        </article>
-        <article class="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1" style="background: #FFFFFF; border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
-          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #0353A4 0%, #2EC4B6 100%);"><span class="text-white/60 text-sm">文章封面</span></div>
-          <div class="p-6">
-            <span class="text-xs font-medium" style="color: #2EC4B6;">公司動態</span>
-            <h3 class="mt-2 text-lg font-bold" style="color: #001233;">志連搬家新增吊車服務</h3>
-            <p class="mt-2 text-sm" style="color: #64748B;">為滿足高樓層與特殊環境搬運需求，志連搬家正式新增專業吊車搬家服務...</p>
-            <span class="mt-4 inline-block text-xs" style="color: #94A3B8;">2024-11-20</span>
-          </div>
-        </article>
-        <article class="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1" style="background: #FFFFFF; border: 1px solid #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);">
-          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #2EC4B6 0%, #023E7D 100%);"><span class="text-white/60 text-sm">文章封面</span></div>
-          <div class="p-6">
-            <span class="text-xs font-medium" style="color: #2EC4B6;">優惠活動</span>
-            <h3 class="mt-2 text-lg font-bold" style="color: #001233;">年終搬家優惠開跑</h3>
-            <p class="mt-2 text-sm" style="color: #64748B;">年底前預約搬家享專屬優惠，精緻搬家服務讓您輕鬆迎接新生活...</p>
-            <span class="mt-4 inline-block text-xs" style="color: #94A3B8;">2024-10-05</span>
-          </div>
-        </article>
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-12" id="news-filter-tabs">
+        {filterCategories.map((cat, index) => (
+          <button
+            type="button"
+            data-category={cat}
+            class={`news-filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              index === 0
+                ? 'text-white'
+                : 'border text-[#334155] hover:bg-[rgba(2,62,125,0.08)] hover:border-[#0353A4]'
+            }`}
+            style={index === 0 ? 'background: #023E7D; border-color: #023E7D;' : 'border-color: #E2E8F0; background: transparent;'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- News Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid">
+        {newsArticles.map((article) => (
+          <article
+            class="news-card group bg-white rounded-2xl overflow-hidden transition-all duration-350 border"
+            style="border-color: #FFE8CC; box-shadow: 0 4px 16px rgba(0,18,51,0.06);"
+            data-category={article.category}
+          >
+            <!-- Category Header -->
+            <div class="relative overflow-hidden" style="aspect-ratio: 16/9; background: linear-gradient(135deg, #023E7D 0%, #0353A4 100%);">
+              <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              </div>
+              <!-- Category Badge -->
+              <span 
+                class="absolute top-0 left-0 px-3 py-1.5 text-xs font-semibold text-white rounded-br-lg"
+                style={`background: ${categoryColors[article.category] || '#0353A4'};`}
+              >
+                {article.category}
+              </span>
+            </div>
+            
+            <!-- Content -->
+            <div class="p-6">
+              <!-- Date -->
+              <div class="flex items-center gap-1.5 text-sm" style="color: #64748B;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                {article.date}
+              </div>
+              
+              <!-- Title -->
+              <h3 class="text-lg font-bold mt-3 line-clamp-2" style="color: #001233;">
+                <a href={`#article-${article.id}`} class="hover:text-[#0353A4] transition-colors duration-200">
+                  {article.title}
+                </a>
+              </h3>
+              
+              <!-- Excerpt -->
+              <p class="text-sm mt-2 line-clamp-3" style="color: #334155; line-height: 1.75;">
+                {article.excerpt}
+              </p>
+              
+              <!-- Read More -->
+              <a 
+                href={`#article-${article.id}`} 
+                class="inline-flex items-center mt-4 text-sm font-semibold transition-colors duration-200 group-hover:text-[#001233]"
+                style="color: #2EC4B6;"
+              >
+                閱讀更多
+                <svg class="ml-1 transition-transform duration-200 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      <div class="mt-12 text-center">
+        <p class="text-sm mb-6" style="color: #64748B;">顯示 1-6 筆，共 6 筆</p>
+        <button 
+          type="button"
+          class="btn-secondary opacity-50 cursor-not-allowed"
+          disabled
+        >
+          載入更多
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative py-16 md:py-20" style="background: #023E7D;">
+    <!-- Warm glow -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(212,168,67,0.08) 0%, transparent 70%);"></div>
+    
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center section-reveal">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">有任何搬家問題？</h2>
+      <p class="text-base md:text-lg mb-8" style="color: #E0E7FF;">歡迎隨時與我們聯繫，獲得專業建議</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/contact/" class="btn-primary">
+          免費諮詢
+        </a>
+        <a 
+          href="tel:0919073191" 
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-sm font-medium transition-all duration-300 border"
+          style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #FFFFFF; backdrop-filter: blur(8px);"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          撥打專線 0919-073191
+        </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  // Filter functionality
+  const newsFilterBtns = document.querySelectorAll('.news-filter-btn');
+  const newsCards = document.querySelectorAll('.news-card');
+
+  newsFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.category;
+
+      // Update active button state
+      newsFilterBtns.forEach(b => {
+        b.style.background = 'transparent';
+        b.style.borderColor = '#E2E8F0';
+        b.style.color = '#334155';
+      });
+      btn.style.background = '#023E7D';
+      btn.style.borderColor = '#023E7D';
+      btn.style.color = '#FFFFFF';
+
+      // Filter cards
+      newsCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        if (category === '全部' || cardCategory === category) {
+          card.style.display = '';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            card.style.transition = 'opacity 350ms ease, transform 350ms ease';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          }, 50);
+        } else {
+          card.style.transition = 'opacity 250ms ease, transform 250ms ease';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 250);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
