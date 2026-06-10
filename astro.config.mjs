@@ -6,7 +6,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  site: 'https://clmove.pages.dev',
+  site: 'https://chihlienmoving.com',
+  trailingSlash: 'always',
   build: {
     format: 'directory'
   }
