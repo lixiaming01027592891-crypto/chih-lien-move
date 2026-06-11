@@ -7,10 +7,40 @@ export interface Props {
   description?: string;
 }
 
-const { 
+const {
   title = '志連精緻搬家｜台中搬家推薦｜專業搬家公司',
   description = '志連精緻搬家是台中專業搬家公司，政府合法立案，提供住家搬家、公司搬遷、貨物運送、精緻搬遷、大型物品搬移、吊車搬家等服務。18年經驗，1,500+服務客戶，服務專線0919-073191。'
 } = Astro.props;
+
+const ogImage = new URL('/hero-bg.png', Astro.site).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MovingCompany',
+  name: '志連精緻搬家',
+  description,
+  url: Astro.site?.href,
+  image: ogImage,
+  telephone: '0919073191',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '安和路99之12號1樓',
+    addressLocality: '西屯區',
+    addressRegion: '台中市',
+    addressCountry: 'TW',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '157',
+  },
+};
 ---
 
 <!DOCTYPE html>
@@ -25,9 +55,17 @@ const {
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
   <link rel="canonical" href={Astro.url.href} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{title}</title>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -46,25 +84,36 @@ const {
 </style>
 
 <script>
-  // Section reveal on scroll
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.15
-  };
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
+  if (prefersReducedMotion) {
+    // Show all sections immediately without animation
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.section-reveal').forEach(el => {
+        el.classList.add('revealed');
+      });
     });
-  }, observerOptions);
+  } else {
+    // Section reveal on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.section-reveal').forEach(el => {
-      observer.observe(el);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.section-reveal').forEach(el => {
+        observer.observe(el);
+      });
     });
-  });
+  }
 </script>

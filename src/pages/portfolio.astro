@@ -204,8 +204,8 @@ const stats = [
 
 <script>
   // Filter functionality
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioCards = document.querySelectorAll('.portfolio-card');
+  const filterBtns = document.querySelectorAll<HTMLElement>('.filter-btn');
+  const portfolioCards = document.querySelectorAll<HTMLElement>('.portfolio-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {

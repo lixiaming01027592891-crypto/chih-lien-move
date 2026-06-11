@@ -164,7 +164,7 @@ const testimonials = [
           <a href="tel:0919073191" class="inline-flex items-center justify-center gap-3 px-8 py-4 font-bold text-base rounded-lg transition-all duration-300 hover:-translate-y-0.5" style="background: linear-gradient(135deg, #D4A843 0%, #B88D2E 100%); color: #001233; box-shadow: 0 8px 30px rgba(212,168,67,0.4);">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>服務專線：0919-073191
           </a>
-          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-base rounded-lg border border-white/20 text-white transition-all duration-300 hover:bg-white/10" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);">
+          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-base rounded-lg border border-white/20 text-white transition-all duration-300 hover:bg-white/10" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);">
             <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background: #06C755;">L</span>LINE 諮詢
           </a>
         </div>
@@ -210,7 +210,7 @@ const testimonials = [
                 <span class="text-lg font-black" style="color: #2EC4B6;">{step.num}</span>
               </div>
               <div class="lg:text-center lg:mt-6 flex-1">
-                <h4 class="text-lg font-bold" style="color: #001233;">{step.title}</h4>
+                <h3 class="text-lg font-bold" style="color: #001233;">{step.title}</h3>
                 <p class="mt-2 text-sm leading-relaxed" style="color: #64748B;">{step.desc}</p>
               </div>
             </div>
@@ -355,7 +355,7 @@ const testimonials = [
         </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
-          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg text-white transition-all duration-300 hover:opacity-90" style="background: #06C755;">
+          <a href="https://line.naver.jp/ti/p/~0919073191" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg text-white transition-all duration-300 hover:opacity-90" style="background: #06C755;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755z"/></svg>LINE 諮詢
           </a>
           <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-lg text-white border border-white/30 transition-all duration-300 hover:bg-white/10">填寫表單</a>
@@ -387,9 +387,11 @@ const testimonials = [
 </style>
 
 <script>
-  const animateCounter = (el, target, duration = 2000) => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animateCounter = (el: HTMLElement, target: number, duration = 2000) => {
     const startTime = performance.now();
-    const update = (currentTime) => {
+    const update = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
@@ -401,31 +403,43 @@ const testimonials = [
     requestAnimationFrame(update);
   };
 
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target || '0', 10);
-        if (target > 0) animateCounter(el, target, 2000);
-        statObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+    const statNumbers = document.querySelectorAll<HTMLElement>('.stat-number');
+
+    if (prefersReducedMotion) {
+      // Show final numbers immediately without animating
+      statNumbers.forEach(el => {
+        const target = parseInt(el.dataset.target || '0', 10);
+        el.textContent = target.toLocaleString();
+      });
+    } else {
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target || '0', 10);
+            if (target > 0) animateCounter(el, target, 2000);
+            statObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      statNumbers.forEach(el => statObserver.observe(el));
+    }
   });
 
-  const heroSection = document.getElementById('hero');
-  const heroIllustration = document.querySelector('.hero-illustration');
-  if (heroSection && heroIllustration) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroHeight = heroSection.offsetHeight;
-      if (scrollY < heroHeight) {
-        heroIllustration.style.transform = `translateY(calc(-50% + ${scrollY * 0.15}px))`;
-        heroIllustration.style.opacity = String(0.9 - (scrollY / heroHeight) * 0.5);
-      }
-    }, { passive: true });
+  if (!prefersReducedMotion) {
+    const heroSection = document.getElementById('hero');
+    const heroIllustration = document.querySelector<HTMLElement>('.hero-illustration');
+    if (heroSection && heroIllustration) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const heroHeight = heroSection.offsetHeight;
+        if (scrollY < heroHeight) {
+          heroIllustration.style.transform = `translateY(calc(-50% + ${scrollY * 0.15}px))`;
+          heroIllustration.style.opacity = String(0.9 - (scrollY / heroHeight) * 0.5);
+        }
+      }, { passive: true });
+    }
   }
 </script>
