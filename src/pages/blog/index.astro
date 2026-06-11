@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return data.pubDate <= new Date();
+});
+
+// Sort by date descending
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categoryLabels: Record<string, string> = {
+  move: '搬家服務',
+  'home-moving': '住家搬家',
+  'office-moving': '公司搬遷',
+  'special-moving': '專項服務',
+  'moving-guide': '搬家知識',
+  recommend: '推薦',
+  qna: '問答',
+};
+
+const categoryColors: Record<string, string> = {
+  move: 'bg-blue-100 text-blue-700',
+  'home-moving': 'bg-green-100 text-green-700',
+  'office-moving': 'bg-purple-100 text-purple-700',
+  'special-moving': 'bg-orange-100 text-orange-700',
+  'moving-guide': 'bg-teal-100 text-teal-700',
+  recommend: 'bg-gold-100 text-yellow-700',
+  qna: 'bg-gray-100 text-gray-700',
+};
+---
+
+<Layout 
+  title="搬家知識部落格｜志連精緻搬家" 
+  description="志連精緻搬家的搬家知識部落格，提供台中搬家、精緻搬家、吊車搬家、公司搬遷等專業知識與建議。"
+>
+  <!-- Hero -->
+  <div class="pt-[72px]">
+    <div class="relative overflow-hidden" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%);">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 80% 20%, rgba(46,196,182,0.08) 0%, transparent 35%);"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 relative">
+        <nav class="mb-8">
+          <ol class="flex items-center gap-2 text-sm text-white/50">
+            <li><a href="/" class="hover:text-gold-400 transition-colors">首頁</a></li>
+            <li>/</li>
+            <li class="text-white/80">部落格</li>
+          </ol>
+        </nav>
+        <h1 class="text-3xl lg:text-4xl font-bold text-white mb-4">搬家知識部落格</h1>
+        <p class="text-lg text-white/70 max-w-2xl">
+          分享搬家相關的專業知識與實用建議，協助您做出最適合的搬遷決策。
+        </p>
+      </div>
+    </div>
+
+    <!-- Post Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      {sortedPosts.length === 0 ? (
+        <div class="text-center py-16 text-gray-500">
+          暫無文章，敬請期待。
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedPosts.map((post) => (
+            <article class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+              <a href={`/blog/${post.slug}/`} class="block">
+                <!-- Category Badge -->
+                <div class="px-6 pt-6 pb-2">
+                  <span class={`inline-block px-3 py-1 text-xs font-medium rounded-full ${categoryColors[post.data.category] || 'bg-gray-100 text-gray-700'}`}>
+                    {categoryLabels[post.data.category] || post.data.category}
+                  </span>
+                </div>
+                <!-- Title -->
+                <div class="px-6 py-3">
+                  <h2 class="text-lg font-bold text-navy-800 group-hover:text-navy-600 transition-colors line-clamp-2 leading-snug">
+                    {post.data.title}
+                  </h2>
+                </div>
+                <!-- Description -->
+                <div class="px-6 pb-4">
+                  <p class="text-sm text-gray-500 line-clamp-3 leading-relaxed">
+                    {post.data.description}
+                  </p>
+                </div>
+                <!-- Meta -->
+                <div class="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {post.data.pubDate.toLocaleDateString('zh-TW')}
+                    </time>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    {post.data.author}
+                  </div>
+                </div>
+                <!-- Tags -->
+                <div class="px-6 pb-5">
+                  <div class="flex flex-wrap gap-1.5">
+                    {post.data.tags.slice(0, 3).map((tag) => (
+                      <span class="px-2 py-0.5 text-xs bg-gray-50 text-gray-500 rounded">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

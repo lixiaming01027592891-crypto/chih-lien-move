@@ -5,7 +5,6 @@ pubDate: 2026-06-12
 author: "志连精緻搬家"
 category: "special-moving"
 tags: ["台中吊車搬家", "台中大型家具搬運", "台中公司搬遷", "台中搬家", "志连搬家"]
-slug: "taichung-special-crane-heavy-260612"
 image_1_prompt: "亞洲搬家師傅在台中市區操作吊車，將大型皮沙發從窗戶吊出，戶外自然光，專業吊掛作業現場"
 image_2_prompt: "亞洲搬家師傅正使用氣泡膜與防震墊仔細包覆一台三角鋼琴，準備進行吊運作業，專業搬運場景"
 ---
