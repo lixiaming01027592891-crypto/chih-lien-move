@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chihlienmoving.com/sitemap.xml
+Sitemap: https://chihlienmoving.com/sitemap-index.xml
