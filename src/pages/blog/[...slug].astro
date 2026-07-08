@@ -24,9 +24,38 @@ const categoryLabels: Record<string, string> = {
   recommend: '推薦',
   qna: '問答',
 };
+
+const SITE = 'https://chihlienmoving.com';
+const postUrl = `${SITE}/blog/${post.slug}/`;
+const blogSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    author: { '@type': 'Organization', name: post.data.author },
+    publisher: {
+      '@type': 'Organization',
+      name: '志連精緻搬家',
+      logo: { '@type': 'ImageObject', url: `${SITE}/favicon.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+    url: postUrl,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '首頁', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: '搬家知識', item: `${SITE}/blog/` },
+      { '@type': 'ListItem', position: 3, name: post.data.title, item: postUrl },
+    ],
+  },
+];
 ---
 
-<Layout title={`${post.data.title}｜志連精緻搬家`} description={post.data.description}>
+<Layout title={`${post.data.title}｜志連精緻搬家`} description={post.data.description} schema={blogSchema}>
   <article class="pt-[72px]">
     <!-- Hero Section -->
     <div class="relative overflow-hidden" style="background: linear-gradient(180deg, #023E7D 0%, #001845 100%);">

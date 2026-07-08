@@ -1,15 +1,18 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 
 export interface Props {
   title?: string;
   description?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { 
+const {
   title = '志連精緻搬家｜台中搬家推薦｜專業搬家公司',
-  description = '志連精緻搬家是台中專業搬家公司，政府合法立案，提供住家搬家、公司搬遷、貨物運送、精緻搬遷、大型物品搬移、吊車搬家等服務。18年經驗，1,500+服務客戶，服務專線0919-073191。'
+  description = '志連精緻搬家是台中專業搬家公司，政府合法立案，提供住家搬家、公司搬遷、貨物運送、精緻搬遷、大型物品搬移、吊車搬家等服務。18年經驗，1,500+服務客戶，服務專線0919-073191。',
+  schema
 } = Astro.props;
 ---
 
@@ -28,6 +31,7 @@ const {
   <link rel="canonical" href={Astro.url.href} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{title}</title>
+  <SchemaOrg extra={schema} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
