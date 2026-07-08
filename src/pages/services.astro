@@ -7,8 +7,8 @@ const description = '志連精緻搬家提供六大專業服務：搬家搬遷�
 const services = [
   {
     id: 'residential', tag: '家庭搬家', title: '台中搬家搬遷',
-    description: '提供住家與一般空間的搬家搬遷服務，包含家具拆裝、物品分類裝箱、保護包覆與搬運等完整作業，依實際現場狀況規劃合適流程。',
-    features: ['家具拆裝與保護包覆', '物品分類裝箱服務', '專業搬運動線規劃', '新址家具定位擺放'],
+    description: '提供住家與一般空間的搬家搬遷服務，包含傢俱拆裝、物品分類裝箱、保護包覆與搬運等完整作業，依實際現場狀況規劃合適流程。',
+    features: ['傢俱拆裝與保護包覆', '物品分類裝箱服務', '專業搬運動線規劃', '新址傢俱定位擺放'],
     detail: '由熟悉搬家動線的工作人員執行，重視物品安全與搬運順序，讓整體搬遷過程有條理、不混亂，協助客戶順利完成新舊空間的轉換。',
   },
   {
@@ -38,14 +38,14 @@ const services = [
   {
     id: 'crane', tag: '吊車服務', title: '台中吊車搬家',
     description: '提供吊卸與起重搬運服務，適用高樓層與特殊環境，提升搬遷安全與效率。',
-    features: ['高樓層吊卸服務', '大型家具吊運', '特殊環境搬運', '專業起重設備'],
+    features: ['高樓層吊卸服務', '大型傢俱吊運', '特殊環境搬運', '專業起重設備'],
     detail: '當搬運物品無法透過樓梯或電梯進出時，吊車搬家是最佳選擇。我們配合專業吊車設備與操作人員，安全地將物品吊運至指定樓層。',
   },
 ];
 
 const comparisonFeatures = [
   { name: '免費到府估價', residential: true, cargo: true, corporate: true, delicate: true, heavy: true, crane: true },
-  { name: '家具拆裝', residential: true, cargo: false, corporate: true, delicate: true, heavy: true, crane: true },
+  { name: '傢俱拆裝', residential: true, cargo: false, corporate: true, delicate: true, heavy: true, crane: true },
   { name: '物品包裝', residential: true, cargo: true, corporate: true, delicate: true, heavy: true, crane: true },
   { name: '南北運送', residential: false, cargo: true, corporate: true, delicate: true, heavy: false, crane: false },
   { name: '吊車配合', residential: false, cargo: false, corporate: false, delicate: false, heavy: true, crane: true },
@@ -54,7 +54,7 @@ const comparisonFeatures = [
   { name: '事後定位', residential: true, cargo: false, corporate: true, delicate: true, heavy: true, crane: true },
 ];
 
-const processSteps = ['電話諮詢', '免費估價', '契約簽訂', '紙箱提供', '搬遷服務', '家具定位', '驗收完成'];
+const processSteps = ['電話諮詢', '免費估價', '契約簽訂', '紙箱提供', '搬遷服務', '傢俱定位', '驗收完成'];
 
 const faqItems = [
   { q: '搬家前需要做哪些準備？', a: '建議您提前整理物品、分類標記，貴重物品與重要文件請自行保管。我們也提供搬家紙箱與包材，可事先向客服索取。' },

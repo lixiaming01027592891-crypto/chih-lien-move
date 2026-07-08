@@ -6,7 +6,7 @@ const blogCollection = defineCollection({
     title: z.string().min(1).max(100),
     description: z.string().min(1).max(200),
     pubDate: z.coerce.date(),
-    author: z.string().default('志连精緻搬家'),
+    author: z.string().default('志連精緻搬家'),
     category: z.enum([
       'move',
       'home-moving',
