@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const title = '志連精緻搬家｜台中搬家公司推薦｜服務與免費估價';
+const description = '尋找台中搬家公司推薦？志連精緻搬家提供住家搬家、公司搬遷、精緻搬遷、大型物品搬移與吊車搬家。查看服務範圍、搬家流程及實績，依物品、樓層與現場條件洽詢免費估價，服務專線0919-073191。';
+
 const processSteps = [
   {
     num: '01',
@@ -125,7 +128,7 @@ const testimonials = [
 ];
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <!-- HERO SECTION -->
   <section id="hero" class="relative min-h-[600px] h-screen w-full overflow-hidden flex items-center">
     <div class="absolute inset-0 z-0" style="background: linear-gradient(180deg, #023E7D 0%, #001845 70%, #001233 100%);"></div>
@@ -145,8 +148,8 @@ const testimonials = [
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div class="max-w-2xl hero-content">
         <p class="font-inter text-sm font-medium tracking-[0.15em] uppercase mb-4" style="color: #4FD1C5;">Chi Hlien Moving Service</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] text-white" style="text-shadow: 0 4px 20px rgba(0,18,51,0.3);">台中專業搬家推薦<br/>安心搬遷首選團隊</h1>
-        <p class="mt-6 text-lg lg:text-xl font-normal max-w-lg" style="color: #E0E7FF;">專業搬家服務，價格透明實在<br class="hidden sm:block"/>家庭搬家、公司搬遷一次完成</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] text-white" style="text-shadow: 0 4px 20px rgba(0,18,51,0.3);">台中搬家推薦<br/>志連精緻搬家團隊</h1>
+        <p class="mt-6 text-lg lg:text-xl font-normal max-w-lg" style="color: #E0E7FF;">選擇台中搬家公司，先了解服務與估價。<br class="hidden sm:block"/>家庭搬家、公司搬遷一次規劃</p>
 
         <div class="flex flex-wrap gap-3 mt-8">
           <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white border border-white/30 bg-white/5">
@@ -259,8 +262,8 @@ const testimonials = [
       <div class="text-center mb-16 section-reveal">
         <p class="text-sm font-medium tracking-[0.15em] uppercase mb-3" style="color: #2EC4B6;">OUR SERVICES</p>
         <div class="w-[60px] h-[2px] mx-auto mb-6" style="background: #D4A843;"></div>
-        <h2 class="text-3xl lg:text-4xl font-bold" style="color: #001233;">專業服務項目</h2>
-        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #64748B;">全方位搬家解決方案，滿足您的各種搬遷需求</p>
+        <h2 class="text-3xl lg:text-4xl font-bold" style="color: #001233;">台中搬家服務與搬運項目</h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: #64748B;">比較台中搬家公司推薦資訊時，先核對服務範圍、物品保護與估價內容，再依搬運條件選擇合適方案。</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
